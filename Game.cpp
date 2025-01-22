@@ -2,7 +2,7 @@
 #include <vector>
 
 void drawBoard(void);
-bool placeMarker(int row, int col, char mark);
+bool placeMarker(char board[3][3], int row, int col, char mark);
 void switchPlayer(char &current_player);
 bool checkForWin(void);
 bool checkForTie(void);
@@ -27,8 +27,7 @@ void drawBoard(void) {
     }
 }
 
-bool placeMarker(int row, int col, char mark) {
-    char board[3][3] = { {'1', '2', '3'}, {'4', '5', '6'}, {'7', '8', '9'} };
+bool placeMarker(char board[3][3], int row, int col, char mark) {
     return row >= 0 && row < 3 && col >= 0 && col < 3 && board[row][col] == ' ' ? true : false;
 }
 
