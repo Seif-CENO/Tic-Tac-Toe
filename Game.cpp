@@ -3,7 +3,7 @@
 
 void drawBoard(void);
 bool placeMarker(int row, int col, char mark);
-void switchPlayer(void);
+void switchPlayer(char &current_player);
 bool checkForWin(void);
 bool checkForTie(void);
 
@@ -32,8 +32,8 @@ bool placeMarker(int row, int col, char mark) {
     return row >= 0 && row < 3 && col >= 0 && col < 3 && board[row][col] == ' ' ? true : false;
 }
 
-void switchPlayer(void) {
-    
+void switchPlayer(char &current_player) {
+    current_player = current_player == 'X' ? 'O' : 'X';
 }
 
 bool checkForWin(void) {
