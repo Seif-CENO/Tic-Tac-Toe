@@ -5,7 +5,7 @@ void drawBoard(void);
 bool placeMarker(char board[3][3], int row, int col, char mark);
 void switchPlayer(char &current_player);
 bool checkForWin(char board[3][3], char marker);
-bool checkForTie(void);
+bool checkForTie(char board[3][3]);
 
 int main(void)
 {
@@ -53,6 +53,13 @@ bool checkForWin(char board[3][3], char marker) {
     return false; // No win yet
 }
 
-bool checkForTie(void) {
-    
+bool checkForTie(char board[3][3]) {
+    for (int i = 0; i < 3; ++i) {
+        for (int j = 0; j < 3; ++j) {
+            if (board[i][j] == ' ') {
+                return false; // Moves are still available
+            }
+        }
+    }
+    return true; // No moves left aka. it's tie
 }
