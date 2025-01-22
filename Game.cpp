@@ -4,7 +4,7 @@
 void drawBoard(void);
 bool placeMarker(char board[3][3], int row, int col, char mark);
 void switchPlayer(char &current_player);
-bool checkForWin(void);
+bool checkForWin(char board[3][3], char marker);
 bool checkForTie(void);
 
 int main(void)
@@ -35,8 +35,22 @@ void switchPlayer(char &current_player) {
     current_player = current_player == 'X' ? 'O' : 'X';
 }
 
-bool checkForWin(void) {
-    
+bool checkForWin(char board[3][3], char marker) {
+    // Check rows and columns
+    for (int i = 0; i < 3; ++i) {
+        if ((board[i][0] == marker && board[i][1] == marker && board[i][2] == marker) || 
+            (board[0][i] == marker && board[1][i] == marker && board[2][i] == marker)) {
+            return true;
+        }
+    }
+
+    // Check diagonals
+    if ((board[0][0] == marker && board[1][1] == marker && board[2][2] == marker) || 
+        (board[0][2] == marker && board[1][1] == marker && board[2][0] == marker)) {
+        return true;
+    }
+
+    return false; // No win yet
 }
 
 bool checkForTie(void) {
