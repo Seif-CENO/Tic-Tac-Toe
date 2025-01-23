@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 
-void drawBoard(void);
+void drawBoard(char board[3][3]);
 bool placeMarker(char board[3][3], int row, int col, char mark);
 void switchPlayer(char &current_player);
 bool checkForWin(char board[3][3], char marker);
@@ -13,8 +13,7 @@ int main(void)
     return 0;
 }
 
-void drawBoard(void) {
-    char board[3][3] = { {'1', '2', '3'}, {'4', '5', '6'}, {'7', '8', '9'} };
+void drawBoard(char board[3][3]) {
     std::cout << "Current board:\n";
 
     for (int i = 0; i < 3; ++i) {
