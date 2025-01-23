@@ -14,21 +14,23 @@ int main(void)
     char current_player = 'X';
     bool isGameRunning = true;
 
-    while (isGameRunning) {
-        drawBoard(board);
-        int row, col;
+    // Drawing the initial board
+    drawBoard(board);
 
+    while (isGameRunning) {
+        int row, col;
         std::cout << "Player " << current_player << ", your move! (enter in row & col): ";
         std::cin >> row >> col;
 
         if(placeMarker(board, row, col, current_player)) {
+            drawBoard(board); // Redraw board after a valid move
+
+            // Check if the current player wins or the game is a tie
             if (checkForWin(board, current_player)) {
-                drawBoard(board);
                 std::cout << "Player " << current_player << " wins! Congrats to player " << current_player << "!!\nGame Closing...\n";
                 isGameRunning = false;
 
             } else if (checkForTie(board)) {
-                drawBoard(board);
                 std::cout << "Ouch, a tie.\nGame Closing...\n";
                 isGameRunning = false;
 
@@ -58,7 +60,7 @@ void drawBoard(char board[3][3]) {
 }
 
 bool placeMarker(char board[3][3], int row, int col, char mark) {
-    return row >= 0 && row < 3 && col >= 0 && col < 3 && board[row][col] == ' ' ? true : false;
+    return row >= 0 && row < 3 && col >= 0 && col < 3 && board[row][col] == ' ' ? (board[row][col] = mark, true) : false; // Updated the board if the move is valid
 }
 
 void switchPlayer(char &current_player) {
