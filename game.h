@@ -1,12 +1,10 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include <iostream>
+#include "board.h"
+#include "player.h"
 
-void drawBoard(char board[3][3]);
-bool placeMarker(char board[3][3], int row, int col, char marker);
-void switchPlayer(char &current_player);
-bool checkForWin(char board[3][3], char mark);
-bool checkForTie(char board[3][3]);
+// Function to start and control the game
+void startGame();
 
-#endif // for GAME_H
+#endif // GAME_H
